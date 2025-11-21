@@ -1,0 +1,11 @@
+﻿@model Course
+
+<h2>@Model.Title</h2>
+
+<p><strong>Teacher:</strong> @Model.Teacher.FirstName @Model.Teacher.LastName</p>
+<p><strong>Capacity:</strong> @Model.Capacity</p>
+
+@if (Context.Session.GetString("IsAdmin") != "true")
+{
+    <a class="btn btn-success" href="/StudentCourse/Request/@Model.Id">Enroll</a>
+}

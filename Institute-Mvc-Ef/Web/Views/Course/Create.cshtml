@@ -1,0 +1,21 @@
+﻿@model Course
+
+<h2>Add Course</h2>
+
+<form method="post">
+    <label>Title</label>
+    <input class="form-control" name="Title" />
+
+    <label>Teacher</label>
+    <select class="form-control" name="TeacherId">
+        @foreach (var t in ViewBag.Teachers)
+        {
+            <option value="@t.Id">@t.FullName</option>
+        }
+    </select>
+
+    <label>Capacity</label>
+    <input type="number" class="form-control" name="Capacity" />
+
+    <button class="btn btn-success mt-2">Save</button>
+</form>

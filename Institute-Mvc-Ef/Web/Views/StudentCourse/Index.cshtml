@@ -1,0 +1,18 @@
+﻿@model List<StudentCourse>
+
+<h2>My Enrollments</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Course</th>
+        <th>Teacher</th>
+    </tr>
+
+@foreach (var s in Model)
+{
+    <tr>
+        <td>@s.Course.Title</td>
+        <td>@s.Course.Teacher.FirstName @s.Course.Teacher.LastName</td>
+    </tr>
+}
+</table>

@@ -1,0 +1,23 @@
+﻿@model Course
+
+<h2>Edit Course</h2>
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <label>Title</label>
+    <input class="form-control" name="Title" value="@Model.Title" />
+
+    <label>Teacher</label>
+    <select class="form-control" name="TeacherId">
+        @foreach (var t in ViewBag.Teachers)
+        {
+            <option selected="@(t.Id == Model.TeacherId)" value="@t.Id">@t.FirstName</option>
+        }
+    </select>
+
+    <label>Capacity</label>
+    <input class="form-control" name="Capacity" value="@Model.Capacity" />
+
+    <button class="btn btn-primary mt-2">Update</button>
+</form>

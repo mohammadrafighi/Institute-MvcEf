@@ -1,0 +1,35 @@
+﻿@model List<Course>
+
+<h2>Courses</h2>
+
+@if (Context.Session.GetString("IsAdmin") == "true")
+{
+    <a class="btn btn-success" href="/Course/Create">Add Course</a>
+}
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>Title</th>
+        <th>Teacher</th>
+        <th>Capacity</th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var c in Model)
+{
+    <tr>
+        <td>@c.Title</td>
+        <td>@c.Teacher.FirstName @c.Teacher.LastName</td>
+        <td>@c.Capacity</td>
+        <td>
+            <a class="btn btn-info btn-sm" href="/Course/Details/@c.Id">Details</a>
+
+            @if (Context.Session.GetString("IsAdmin") == "true")
+            {
+                <a class="btn btn-primary btn-sm" href="/Course/Edit/@c.Id">Edit</a>
+                <a class="btn btn-danger btn-sm" href="/Course/Delete/@c.Id">Delete</a>
+            }
+        </td>
+    </tr>
+}
+</table>
