@@ -2,7 +2,7 @@
 using Institute_Mvc_Ef.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Institute_Mvc_Ef.Web.Controllers
+namespace Institute_Mvc_Ef.Controllers
 {
     public class UserController : Controller
     {

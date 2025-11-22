@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Institute_Mvc_Ef.Domain.Models.Course>
+
+@{
+    bool isLoggedIn = Context.Session.GetInt32("UserId") != null;
+    bool isAdmin = Context.Session.GetString("IsAdmin") == "true";
+}
+
+<h2>Courses</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Capacity</th>
+            <th>Teacher Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Capacity</td>
+                <td>@item.Teacher?.FirstName @item.Teacher?.LastName</td>
+
+                <td>
+                    @* حالت لاگین نکرده *@
+                    @if (!isLoggedIn)
+                    {
+                        <a class="btn btn-primary" href="/User/Login">Login</a>
+                    }
+                    @* حالت کاربر معمولی *@
+                    else if (!isAdmin)
+                    {
+                        <a class="btn btn-success" href="/Course/JoinCourse/@item.Id">Join</a>
+                    }
+                    @* حالت ادمین *@
+                    else
+                    {
+                        <a class="btn btn-warning" href="/Course/Edit/@item.Id">Edit</a>
+                        <a class="btn btn-danger" href="/Course/Delete/@item.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

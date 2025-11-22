@@ -1,7 +1,7 @@
 ﻿using Institute_Mvc_Ef.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Institute_Mvc_Ef.Web.Controllers
+namespace Institute_Mvc_Ef.Controllers
 {
     public class StudentCourseController : Controller
     {

@@ -3,7 +3,7 @@ using Institute_Mvc_Ef.Application.Interfaces;
 using Institute_Mvc_Ef.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Institute_Mvc_Ef.Web.Controllers
+namespace Institute_Mvc_Ef.Controllers
 {
     public class CourseController : Controller
     {
@@ -83,6 +83,18 @@ namespace Institute_Mvc_Ef.Web.Controllers
         {
             var course = _courseService.GetById(id);
             return View(course);
+        }
+        public IActionResult JoinCourse(int studentid,int courseid ) { 
+        var result=_courseService.JoinCourse(studentid,courseid);
+            if (result == false)
+            {
+                TempData["Error"] = "Not successfull";
+            }
+            else {
+                TempData["Success"] = "Successfull";
+            }
+            return RedirectToAction("Index");
+
         }
        
     }

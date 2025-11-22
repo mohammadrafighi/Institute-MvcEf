@@ -11,6 +11,7 @@ namespace Institute_Mvc_Ef.Application.Services
         {
             repo = Srepo;
         }
+        public Student? GetByUsername(string username) => repo.GetByUsername(username);
         public bool Register(string username, string password)
         {
             var user = repo.GetByUsername(username);
@@ -28,10 +29,10 @@ namespace Institute_Mvc_Ef.Application.Services
         public Student Login(string username, string password)
         {
             var user= repo.GetByUsername(username);
-            if (password != user.Password)
-            {
-                return null;
-            }
+            //if (password != user.Password)
+            //{
+            //    return null;
+            //}
             return user;
 
         }
@@ -46,7 +47,7 @@ namespace Institute_Mvc_Ef.Application.Services
         {
             repo.Delete(id); return true;
         }
-        public Student? GetByUsername(string username)=>repo.GetByUsername(username);
+       
         public bool IsAdmin(int id) => repo.GetById(id).IsAdmin;
     }
 }

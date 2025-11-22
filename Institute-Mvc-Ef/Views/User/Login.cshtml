@@ -1,0 +1,24 @@
+﻿@model Student
+
+<h2>Login</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Username</label>
+        <input name="Username" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <input name="Password" type="password" class="form-control" required />
+    </div>
+
+    <button class="btn btn-primary">Login</button>
+
+    <a href="/User/Register" class="btn btn-link">Register</a>
+
+    @if (ViewBag.Error != null)
+    {
+        <p class="text-danger">@ViewBag.Error</p>
+    }
+</form>

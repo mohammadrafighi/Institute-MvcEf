@@ -20,6 +20,7 @@ namespace Institute_Mvc_Ef.Infrastructure.Data
 
             if (!context.Courses.Any())
             {
+
                 context.Courses.Add(new Course
                 {
                     Title = "Backend",
@@ -37,8 +38,6 @@ namespace Institute_Mvc_Ef.Infrastructure.Data
 
             }
          
-            if (context.Students.Any()) 
-            {
                 context.Students.Add(new Student
                 {
                     Username="admin",
@@ -53,7 +52,7 @@ namespace Institute_Mvc_Ef.Infrastructure.Data
                     
 
                 });
-            }
+            
 
             context.SaveChanges();
         }
